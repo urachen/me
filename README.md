@@ -1,6 +1,6 @@
-# lego-vue
+# me-vue
 
-jx-vue
+me-vue
 
 ## Setup
 
@@ -11,7 +11,7 @@ jx-vue
 
 ### Installations
 
-    $ git@gitlab.starlux-airlines.com:foundation/toolkit/template/jx-vue.git
+    $ git@github.com:urachen/me.git
     # clone codebase
 
     $ npm install
@@ -25,4 +25,5 @@ jx-vue
     $ npm run watch
     # bundle js files when js files are modified
 
-    # visit http://127.0.0.1:8080/login
+    # visit http://127.0.0.1:8080/bio
+
