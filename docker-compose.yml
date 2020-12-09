@@ -1,0 +1,22 @@
+version: "3"
+services:
+  vue:
+    build:
+      context: .
+      dockerfile: Local.Dockerfile
+    container_name: vue
+    environment:
+      - NODE_ENV=development
+      - PORT=8080
+      - BASEURL=https://localhost/
+    volumes:
+      - ./src/dist:/www/src/dist
+    ports:
+      - 8080:8080
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - ./src/dist:/usr/share/nginx/html
+    ports:
+      - 8000:80

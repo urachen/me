@@ -1,0 +1,60 @@
+{
+    "list": [
+      {
+        "id": "schedule",
+        "key": "createReport",
+        "displayName": "menu.create_report",
+        "icon": "la la-plane",
+        "path": "/schedule"
+      },
+      {
+        "id": "checklists",
+        "key": "checklists",
+        "displayName": "menu.check_report",
+        "icon": "la la-list",
+        "path": "/checklists"
+      },
+      {
+        "id": "fileManagement",
+        "key": "files",
+        "displayName": "menu.file_management",
+        "icon": "la la-file-alt",
+        "path": "/fileManagement/caaFiles",
+        "children":[
+          {
+            "id": "caaFiles",
+            "displayName": "menu.approved_file",
+            "icon": "la la-file-alt",
+            "path": "/fileManagement/caaFiles"
+          },
+          {
+            "id": "CPDOneDrive",
+            "displayName": "menu.CPD_one_drive",
+            "icon": "la la-external-link-alt",
+            "path": "/fileManagement/CPDOneDrive"
+          }
+        ]
+      },
+      {
+        "id": "authority",
+        "key": "permissions",
+        "displayName": "menu.authority",
+        "icon": "la la-list",
+        "path": "/authority/users",
+        "children":[
+          {
+            "id": "users",
+            "displayName": "menu.users",
+            "icon": "la la-user-friends",
+            "path": "/authority/users"
+          },
+          {
+            "id": "roles",
+            "displayName": "menu.roles",
+            "icon": "la la-user-circle",
+            "path": "/authority/roles"
+          }
+        ]
+      }
+    ]
+  }
