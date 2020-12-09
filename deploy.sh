@@ -1,5 +1,5 @@
 npm run build &&
-git checkout gh-pages &&
+git checkout -b gh-pages &&
 rm -rf src tests css js img public *.json *.ico *.js *.css *.html *.png *.jpg *.gif *.jpeg *.lock *.sh *.md &&
 mv dist/* ./ &&
 rm -rf dist;
