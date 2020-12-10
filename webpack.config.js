@@ -30,7 +30,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.join(resourcesPath, "dist"),
       filename: devMode ? "[name].js" : "[name].[hash:5].js",
-      publicPath: "/"
+      publicPath: "/me/"
     },
     module: {
       rules: [

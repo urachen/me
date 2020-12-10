@@ -4,6 +4,7 @@ const routes = [
     path: '/',
     name: 'Main',
     component: () => import('@views/Main'),
+    redirect: '/bio',
     meta: {
       guarded: false
     },

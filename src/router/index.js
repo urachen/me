@@ -7,7 +7,8 @@ import routes from './routes';
 
 const router = new VueRouter({
   routes,
-  // mode: 'history'
+  mode: 'hash',
+  base: '/me',
 });
 
 router.beforeEach((to, from, next) => {
