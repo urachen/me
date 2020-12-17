@@ -2,18 +2,14 @@
   <div>
     <el-row>
       <el-col :span="24">
-        <div class="main-title">
-          <H1>Ura Chen</H1>
-          <div class="main-divider"></div>
-          <h6 class="main-job">Front-End Developer</h6>
-        </div>
+        <main-header />
       </el-col>
     </el-row>
     <el-row>
-      <el-col :span="10" :xs="24">
+      <el-col :span="10" :xl="7" :xs="24">
         <el-image class="block" :src="profileImgUrl" :fit="'cover'"></el-image>
       </el-col>
-      <el-col :span="14" :xs="24">
+      <el-col :span="14" :xl="17" :xs="24">
         <el-row
           class="profile-aboutme-top"
           type="flex"
@@ -23,8 +19,15 @@
           <el-col :span="16">
             <div>
               <div class="aboutme-title">ABOUT ME</div>
-              <div class="aboutme-divider fade-in"></div>
-              <div class="normal-text">{{ aboutMe }}</div>
+              <div
+                class="aboutme-divider"
+                data-aos="fade-left"
+                data-aos-duration="2000"
+              ></div>
+              <div class="normal-text" v-html="aboutMe"></div>
+              <el-button plain class="aboutme-btn" @click="clickResume"
+                >Download Resume</el-button
+              >
             </div>
           </el-col>
         </el-row>
@@ -36,15 +39,21 @@
         >
           <el-col :span="16">
             <div class="aboutme-icon">
-              <i class="iconify" data-icon="ant-design:linkedin-filled"></i>
-              <span
-                class="iconify"
-                data-icon="ant-design:facebook-filled"
-              ></span>
-              <span
-                class="iconify"
-                data-icon="ant-design:instagram-filled"
-              ></span>
+              <a
+                href="https://www.linkedin.com/in/ura-chen-7839a01b5/"
+                target="_blank"
+              >
+                <i class="iconify" data-icon="ant-design:linkedin-filled"></i
+              ></a>
+              <a
+                href="https://www.facebook.com/yuching.chen.925/"
+                target="_blank"
+              >
+                <i class="iconify" data-icon="ant-design:facebook-filled"></i
+              ></a>
+              <a href="https://www.instagram.com/chingchenn/" target="_blank">
+                <i class="iconify" data-icon="ant-design:instagram-filled"></i
+              ></a>
             </div>
           </el-col>
         </el-row>
@@ -122,13 +131,16 @@
         ></el-image>
       </el-col>
       <el-col :span="9" :xs="23">
-        <span
-          class="title project-title"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-          >PROJECTS</span
-        >
-        <el-button type="primary" @click="clickProject">Read More</el-button>
+        <div class="project-content">
+          <span
+            class="title project-title"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            >PORTFOLIO</span
+          >
+          <div class="normal-text" v-html="project"></div>
+          <el-button type="primary" @click="clickProject">Read More</el-button>
+        </div>
       </el-col>
       <el-col
         :span="3"
@@ -154,7 +166,6 @@
       </el-row>
       <el-row type="flex" justify="center">
         <el-col :span="8" :xs="24">
-          <!-- <span class="text-gray">X</span> -->
           <div class="text-gray-light text-center text-block">X</div>
           <div class="text-gray-light text-center">Feel free to contact me</div>
         </el-col>
@@ -178,11 +189,8 @@
         <el-col :span="8" :xs="24">
           <div class="contact-text text-center">
             Follow Me On
-            <span class="iconify" data-icon="ant-design:facebook-filled"></span>
-            <span
-              class="iconify"
-              data-icon="ant-design:instagram-filled"
-            ></span>
+            <i class="iconify" data-icon="ant-design:facebook-filled"></i>
+            <i class="iconify" data-icon="ant-design:instagram-filled"></i>
           </div>
         </el-col>
       </el-row>
@@ -191,20 +199,19 @@
 </template>
 
 <script>
-import Header from '@views/layout/Header'
-import Footer from '@views/layout/Footer'
+import MainHeader from '@components/MainHeader'
 export default {
   name: "Main",
   components: {
-    Header, Footer
+    MainHeader
   },
 
   data() {
     return {
-      profileImgUrl: require('@assets/img/test.png'),
+      profileImgUrl: require('@assets/img/me_v2.png'),
       profileSubImgUrl: require('@assets/img/profile-sub.jpg'),
       projectImgUrl: require('@assets/img/project.jpg'),
-      aboutMe: `我是陳鈺青，個性正向樂觀，做事思考周全且態度積極，面對新的工作環境及事物能快速適應、學習力強，在團隊合作中具備良好的溝通能力。喜愛旅行與攝影，藉由旅行探索未知，開闊自己的眼界，而攝影培養觀察力、美感的直覺與眼光。`,
+      aboutMe: `<p>我是陳鈺青，個性正向樂觀，做事思考周全且態度積極，面對新的工作環境及事物能快速適應、學習力強，在團隊合作中具備良好的溝通能力。</p><p>喜愛旅行與攝影，藉由旅行探索未知，開闊自己的眼界，而攝影培養觀察力、美感的直覺與眼光。</p>`,
       aboutMeDeveloper: `我是一名網頁前端工程師，因樂於研究UX使用者體驗，在開發過程中除追求美觀易讀的介面外，亦以優質友善的使用者體驗為目標。擁有後端開發經驗，在規畫制定API時，可與後端工程師合作，解決多數業務邏輯並減低前後端溝通問題。`,
       skills: [
         {
@@ -231,7 +238,8 @@ export default {
           ],
           memo: ''
         }
-      ]
+      ],
+      project:"主要內容為"
     };
   },
   methods: {
@@ -242,6 +250,9 @@ export default {
     },
     clickProject() {
       this.$router.push({ name: 'Project' });
+    },
+    clickResume() {
+      this.$router.push({ name: 'ResumeIndex' });
     }
   }
 };
@@ -271,10 +282,6 @@ export default {
 .el-menu--horizontal {
   border-bottom: none;
   background-color: inherit;
-
-  .el-menu-item {
-    color: #ffffff;
-  }
 }
 .mobile-menu {
   display: none;
@@ -312,21 +319,6 @@ export default {
   z-index: 3;
   position: sticky;
 }
-.main-title {
-  color: $--color-primary;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.main-divider {
-  border-top: solid 1px $--color-primary;
-  width: 30px;
-}
-.main-title-job {
-  font-weight: 500;
-  color: $color-gray-normal;
-}
 .block {
   min-height: 650px;
 }
@@ -347,6 +339,9 @@ export default {
 .aboutme-divider {
   min-height: 20px;
   border-top: solid 2px $color-green-dark;
+}
+.aboutme-btn {
+  margin: 20px 0px;
 }
 .aboutme-icon {
   display: flex;
@@ -379,13 +374,16 @@ export default {
   margin-bottom: 25px;
   text-transform: uppercase;
 }
-.aboutme-icon > .iconify {
-  width: 40px;
-  height: 40px;
+.aboutme-icon > a {
   margin-right: 20px;
   &:last-child {
     margin-right: 0;
   }
+}
+.aboutme-icon > a > .iconify {
+  color: $color-gray-dark;
+  width: 40px;
+  height: 40px;
 }
 .skill {
   background-color: $color-green-light;
@@ -410,7 +408,7 @@ export default {
   border-top: solid 2px $color-green-dark;
 }
 .skill-card {
-  padding: 20px;
+  // padding: 20px;
   margin: 50px;
   min-height: 400px;
 }
@@ -450,9 +448,17 @@ export default {
 }
 .right-divider {
   border-left: solid 2px $color-green-dark;
-  height:400px
+  height: 400px;
 }
 .project-image {
+  height: 400px;
+}
+.project-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding:20px;
   height: 400px;
 }
 .contact {
@@ -484,5 +490,4 @@ export default {
     justify-content: center;
   }
 }
-
 </style>

@@ -6,57 +6,77 @@
           class="title project-title"
           data-aos="fade-up"
           data-aos-duration="2000"
-          >Project</span
+          >PORTFOLIO</span
         >
       </el-col>
     </el-row>
     <el-row class="bg">
-      <el-col class="project-detail-image" :span="12" :xs="24">
-        <el-carousel indicator-position="outside" :autoplay="false">
-          <el-carousel-item
-            v-for="(img, imgKey) in currentProject.imgUrls"
+      <el-col :span="16" :xs="24" class="project-detail-cover-image">
+        <el-row>
+          <transition>
+            <el-image
+              :src="currentCover || currentProject.coverImg"
+              :fit="'contain'"
+              lazy
+              :preview-src-list="currentProject.imgUrls"
+            ></el-image>
+          </transition>
+        </el-row>
+        <el-row class="project-detail-image-group">
+          <el-col
+            :span="6"
+            v-for="(imgItem, imgKey) in currentProject.imgUrls"
             :key="imgKey"
           >
-            <el-image class="carousel-img" :src="img" :fit="'cover'"></el-image>
-          </el-carousel-item>
-        </el-carousel>
+            <el-image
+              class="img-item"
+              :src="imgItem"
+              :fit="'contain'"
+              @click="onClickImg(imgKey)"
+            ></el-image>
+          </el-col>
+        </el-row>
       </el-col>
-      <el-col class="project-detail-content" :span="12" :xs="24">
-        <div class="projct-content">
-          <h1>{{ currentProject.title }}</h1>
-          <span>{{ currentProject.background }}</span>
-          <el-divider></el-divider>
-          <el-row class="detail-item">
-            <el-col :span="3">
-              <span class="detail-title">Links</span>
-            </el-col>
-            <el-col :span="20">
-              <el-link
-                v-for="link in currentProject.links"
-                :key="link.name"
-                :href="link.url"
-                target="_blank"
-                >{{ link.name }}</el-link
-              >
-            </el-col>
-          </el-row>
-          <el-row>
-            <el-col :span="3">
-              <span class="detail-title">Tags</span>
-            </el-col>
-            <el-col :span="20">
-              <el-tag
-                :type="'info'"
-                effect="dark"
-                v-for="(tag, tagKey) in currentProject.tags"
-                :key="tagKey"
-              >
-                {{ tag }}
-              </el-tag>
-            </el-col>
-          </el-row>
-          <el-divider></el-divider>
-        </div>
+      <el-col :span="8" :xs="24" class="project-detail-content">
+        <h1>{{ currentProject.title }}</h1>
+        <div class="normal-text" v-html="currentProject.background"></div>
+        <el-divider></el-divider>
+        <el-row
+          class="detail-item"
+          v-if="currentProject.hasOwnProperty('links')"
+        >
+          <el-col :span="3" :xs="24">
+            <span class="detail-title">Links</span>
+          </el-col>
+          <el-col :span="20" :xs="24">
+            <el-link
+              v-for="link in currentProject.links"
+              :key="link.name"
+              :href="link.url"
+              target="_blank"
+              >{{ link.name }}</el-link
+            >
+          </el-col>
+        </el-row>
+        <el-row
+          class="detail-item"
+          v-if="currentProject.hasOwnProperty('tags')"
+        >
+          <el-col :span="3" :xs="24">
+            <span class="detail-title">Tags</span>
+          </el-col>
+          <el-col :span="20" :xs="24">
+            <el-tag
+              :type="'info'"
+              effect="plain"
+              v-for="(tag, tagKey) in currentProject.tags"
+              :key="tagKey"
+            >
+              {{ tag }}
+            </el-tag>
+          </el-col>
+        </el-row>
+        <el-divider></el-divider>
       </el-col>
     </el-row>
     <el-row class="back" type="flex" justify="center">
@@ -71,19 +91,33 @@ export default {
   name: "projectDetail",
   data() {
     return {
-      currentProjectKey: this.$route.params.projectKey
+      currentProjectKey: this.$route.params.projectKey,
+      currentCover: ''
     }
   },
   computed: {
     currentProject() {
-      return this.$store.getters.projects.find(e => e.key === this.currentProjectKey);
+      return _.find(this.$store.getters.portfolio, portofolioItem => {
+        return portofolioItem.key === this.currentProjectKey
+      })
     }
   },
-
   methods: {
     onBack() {
       this.$router.go(-1);
+    },
+    onClickImg(key) {
+      this.currentCover = this.currentProject.imgUrls[key];
     }
+  },
+  creagted() {
+    this.currentCover = this.currentProject.coverImg;
+
+    let project;
+    _.forEach(this.$store.getters.portfolio, (portfolioItem) => {
+      project = portfolioItem.projects.find(e => e.key === this.currentProjectKey);
+    })
+    console.log(project);
   }
 }
 </script>
@@ -114,17 +148,31 @@ export default {
   margin: 20px 0px;
 }
 
-.project-detail-image,
+.project-detail-cover-image,
 .project-detail-content {
   padding: 30px;
-}
-.carousel-img {
   min-height: 300px;
 }
-.projct-content {
+.project-detail-cover-image {
+  transition-delay: 2s;
+}
+.project-detail-content {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+.project-detail-image-group {
+  margin-top: 20px;
+}
+.img-item {
+  padding: 10px;
+  cursor: pointer;
+  opacity: 1;
+  height: 120px;
+}
+.img-item :hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 .detail-item {
   margin-bottom: 10px;
@@ -137,9 +185,21 @@ export default {
 }
 .el-tag {
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 .el-link {
   margin-right: 10px;
+}
+.el-image-viewer__btn {
+  color: #ffffff !important;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s;
+}
+.v-enter,
+.v-leave-to {
+  opacity: 0;
 }
 @media (min-width: 992px) {
 }

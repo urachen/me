@@ -7,7 +7,7 @@
     <div class="resume-tab" id="resume">
       <el-tabs v-model="currentTab">
         <el-tab-pane
-          v-for="(rItem,rKey) in tabs"
+          v-for="(rItem, rKey) in tabs"
           :key="rKey"
           :label="rItem.displayName"
           :name="rItem.name"
@@ -29,8 +29,8 @@ export default {
   data() {
     return {
       tabs: [
-        { name: "Cv", displayName: "Resume"},
-        { name: "Autobiography", displayName: "Autobiography"}
+        { name: "Cv", displayName: "Resume" },
+        { name: "Autobiography", displayName: "Autobiography" }
       ],
       currentTab: 'Cv'
     }
@@ -58,3 +58,11 @@ export default {
   }
 }
 </script>
+<style scoped lang="scss">
+@import "@assets/scss/custom-main.scss";
+@import "@assets/scss/element-variables.scss";
+.resume-tab {
+  max-width: 210mm;
+  margin: 0 auto !important;
+}
+</style>

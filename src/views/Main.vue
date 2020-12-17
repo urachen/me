@@ -42,8 +42,32 @@ export default {
   name: "Main",
   data() {
     return {
+      menuList: [
+        {
+          key: 'bio',
+          name: 'ABOUT ME',
+          path: '/bio',
+          isActive: false
+        },
+        {
+          key: 'project',
+          name: 'PROJECT',
+          path: '/project',
+          isActive: false
+        },
+        {
+          key: 'resume',
+          name: 'RESUME',
+          path: '/resume/index',
+          isActive: false
+        }
+      ]
     };
-  }
+  },
+  // watch: {
+  //   "$route"(to, from) {
+  //   }
+  // }
 };
 </script>
 <style scoped lang="scss">
@@ -63,6 +87,9 @@ export default {
   a {
     color: #ffffff;
     text-decoration: none;
+  }
+  .is-active {
+    background-color: #fff;
   }
 }
 .el-menu.el-menu--horizontal {
@@ -102,12 +129,7 @@ export default {
 }
 .el-main {
   padding: 0;
-}
-.el-row {
-  // margin-bottom: 20px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+  min-height: 830px;
 }
 .el-footer {
   background-color: $color-brown;

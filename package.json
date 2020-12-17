@@ -1,14 +1,14 @@
 {
-  "name": "cfas-vue",
+  "name": "me-vue",
   "version": "0.0.0",
-  "description": "cfas-vue",
+  "description": "me-vue",
   "main": "main.js",
-  "author": "STARLUX",
+  "author": "urachen",
   "scripts": {
     "dev": "webpack-dev-server --inline --watch -d",
     "build": "webpack -p",
     "lint": "eslint --ext .js,.vue src",
-    "i": "npm config set registry https://nexus.starlux-airlines.com/repository/npm && npm install && npm config set registry https://registry.npmjs.org",
+    "i": "npm install && npm config set registry https://registry.npmjs.org",
     "deploy": "gh-pages -d src/dist"
   },
   "dependencies": {

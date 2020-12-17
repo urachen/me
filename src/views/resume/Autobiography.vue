@@ -117,9 +117,25 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "@assets/scss/custom-main.scss";
+@import "@assets/scss/element-variables.scss";
 @page {
   size: A4;
   margin: 0;
+}
+.ab-title {
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ab-content {
+  color: $color-gray-normal;
+  font-size: 14px;
+  white-space: 5px;
+  text-align: justify;
+  line-height: 16pt;
+  margin-bottom: 10px;
 }
 </style>
