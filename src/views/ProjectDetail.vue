@@ -18,14 +18,14 @@
               :src="currentCover || currentProject.coverImg"
               :fit="'contain'"
               lazy
-              :preview-src-list="currentProject.imgUrls"
+              :preview-src-list="currentImgUrls"
             ></el-image>
           </transition>
         </el-row>
         <el-row class="project-detail-image-group">
           <el-col
             :span="6"
-            v-for="(imgItem, imgKey) in currentProject.imgUrls"
+            v-for="(imgItem, imgKey) in currentImgUrls"
             :key="imgKey"
           >
             <el-image
@@ -100,14 +100,22 @@ export default {
       return _.find(this.$store.getters.portfolio, portofolioItem => {
         return portofolioItem.key === this.currentProjectKey
       })
+    },
+    currentImgUrls() {
+      return _.map(this.currentProject.imgUrls, fileNo => {
+        console.log(fileNo)
+        console.log(this.currentProject.key);
+        return require(`@assets/img/${this.currentProject.key}/${fileNo}.png`);
+      })
+      // return this.currentProject.imgUrls
     }
   },
   methods: {
     onBack() {
-      this.$router.go(-1);
+      this.$router.push({name:'Project'})
     },
     onClickImg(key) {
-      this.currentCover = this.currentProject.imgUrls[key];
+      this.currentCover = this.currentImgUrls[key];
     }
   },
   creagted() {

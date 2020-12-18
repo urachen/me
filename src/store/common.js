@@ -6,7 +6,7 @@ const initialState = {
       key: "f2eHotel",
       title: "F2E Hotel",
       coverImg: require('@assets/img/f2eHotel/1.png'),
-      imgUrls: [require('@assets/img/f2eHotel/1.png'), require('@assets/img/f2eHotel/2.png'), require('@assets/img/f2eHotel/3.png'), require('@assets/img/f2eHotel/4.png'), require('@assets/img/f2eHotel/5.png'), require('@assets/img/f2eHotel/6.png')],
+      imgUrls: ['1','2','3','4','5','6'],
       background: `<p>參加THE F2E 2nd，串接 F2E 提供的旅館 API，可即時查詢、預定所有房型。</p>
           <ul>
             <li>UI設計稿:F2E UI設計組所提供的極簡風介面</li>
@@ -35,8 +35,8 @@ const initialState = {
       type: 'frontend',
       key: "senseProject",
       title: "山時作 SenseProject",
-      coverImg: require('@assets/img/senseProject/1.jpg'),
-      imgUrls: [require('@assets/img/senseProject/1.jpg'), require('@assets/img/senseProject/2.jpg'), require('@assets/img/senseProject/3.jpg')],
+      coverImg: require('@assets/img/senseProject/1.png'),
+      imgUrls: ['1','2','3'],
       background: "山時作 SenseProject 餐廳形象官網，提供最新活動消息、線上菜單、線上訂位、包場資訊、甜點訂製及聯絡資訊",
       // links: [
       //   {
@@ -51,7 +51,7 @@ const initialState = {
       key: "workouter",
       title: "Workouter 運動筆記",
       coverImg: require('@assets/img/workouter/1.png'),
-      imgUrls: [require('@assets/img/workouter/1.png'), require('@assets/img/workouter/2.png'), require('@assets/img/workouter/3.png'), require('@assets/img/workouter/4.png'), require('@assets/img/workouter/5.png'), require('@assets/img/workouter/6.png'), require('@assets/img/workouter/7.png')],
+      imgUrls: ['1','2','3','4','5','6','7'],
       background: `<p>Workouter主要提供健身者輸入各項運動紀錄，以便使用者檢視自身訓練狀態，除健身紀錄外，也可加入一般日常運動記錄，例如:瑜珈、慢跑、飛輪、登山等。</p>
           <ul>
             <li>wireframe/UI設計稿:透過Figma自行繪製</li>
@@ -70,8 +70,6 @@ const initialState = {
           name: "Figma設計稿",
           url: " https://www.figma.com/file/msgFudMLm7zQKLSDdtHvWB/Workouter?node-id=100%3A0"
         }
-
-       
       ],
       tags: ["React", "Material UI"]
     },
@@ -85,11 +83,26 @@ const initialState = {
       tags: ["SCSS", "Bootstrap", "Vue", "Vuex", "Webpack", "Restful API"]
     },
     {
+      type: 'frontend',
+      key: "realtalk",
+      title: "Real Talk Prototype",
+      coverImg: require('@assets/img/realtalk/1.png'),
+      imgUrls: ['1','2','3','4','5','6','7','8','9','10'],
+      background: `提供企業內部同仁交流的論壇`,
+      links: [
+        {
+          name: "Demo",
+          url: "https://urachen.github.io/realtalk_prototype"
+        }   
+      ],
+      tags: ["Bootstrap"]
+    },
+    {
       type: 'UI',
       key: "UI21Day",
       title: "21 Days UI Challenge",
       coverImg: require('@assets/img/UI21Day/1.png'),
-      imgUrls: [require('@assets/img/UI21Day/1.png'), require('@assets/img/UI21Day/2.png'), require('@assets/img/UI21Day/3.png'), require('@assets/img/UI21Day/4.png'), require('@assets/img/UI21Day/5.png'), require('@assets/img/UI21Day/6.png'), require('@assets/img/UI21Day/7.png')],
+      imgUrls: ['1','2','3','4','5','6','7'],
       background: `<p>參與Figma 21天實戰營，UI視覺設計作品集</p>
           <ul>
             <li>Sign up page</li>
