@@ -65,4 +65,10 @@ export default {
   max-width: 210mm;
   margin: 0 auto !important;
 }
+.el-tabs__content {
+  overflow: auto !important;
+}
+#btn_group {
+  margin-top: 20px;
+}
 </style>

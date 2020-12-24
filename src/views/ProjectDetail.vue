@@ -40,6 +40,24 @@
       <el-col :span="8" :xs="24" class="project-detail-content">
         <h1>{{ currentProject.title }}</h1>
         <div class="normal-text" v-html="currentProject.background"></div>
+        <el-row>
+          <el-col :span="16">
+            <el-input
+              placeholder="Please input password to see more"
+              v-model="password"
+              show-password
+              :disabled="check"
+            ></el-input>
+          </el-col>
+          <el-col :offset="1" :span="7">
+            <el-button
+              icon="el-icon-check"
+              circle
+              @click="onClickPassword"
+              :disabled="check"
+            ></el-button>
+          </el-col>
+        </el-row>
         <el-divider></el-divider>
         <el-row
           class="detail-item"
@@ -92,7 +110,9 @@ export default {
   data() {
     return {
       currentProjectKey: this.$route.params.projectKey,
-      currentCover: ''
+      currentCover: '',
+      password: '',
+      check: false
     }
   },
   computed: {
@@ -103,29 +123,33 @@ export default {
     },
     currentImgUrls() {
       return _.map(this.currentProject.imgUrls, fileNo => {
-        console.log(fileNo)
-        console.log(this.currentProject.key);
         return require(`@assets/img/${this.currentProject.key}/${fileNo}.png`);
       })
-      // return this.currentProject.imgUrls
+    }
+  },
+  watch: {
+    "check"(to, from) {
+      if (to) {
+        this.$store.dispatch('setInternalImg', this.check);
+      }
     }
   },
   methods: {
     onBack() {
-      this.$router.push({name:'Project'})
+      this.$router.push({ name: 'Project' })
     },
     onClickImg(key) {
       this.currentCover = this.currentImgUrls[key];
+    },
+    onClickPassword() {
+      if (this.password === 'starlux') {
+        this.check = true;
+      }
     }
   },
-  creagted() {
+  created() {
     this.currentCover = this.currentProject.coverImg;
-
-    let project;
-    _.forEach(this.$store.getters.portfolio, (portfolioItem) => {
-      project = portfolioItem.projects.find(e => e.key === this.currentProjectKey);
-    })
-    console.log(project);
+    this.$store.dispatch('setInternalImg', this.check);
   }
 }
 </script>
@@ -208,6 +232,9 @@ export default {
 .v-enter,
 .v-leave-to {
   opacity: 0;
+}
+h1 {
+  color: $color-gray-dark;
 }
 @media (min-width: 992px) {
 }

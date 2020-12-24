@@ -124,6 +124,85 @@ export default {
   size: A4;
   margin: 0;
 }
+.cv-container {
+  background-color: #fcfbf6;
+  // fcf9ec
+  position: relative !important;
+  max-width: 210mm;
+  height: 292mm;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  font-size: 10pt;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial,
+    sans-serif;
+  line-height: 1.2 !important;
+  color: #000 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cv-row {
+  min-width: 500px;
+  margin-left: 80px;
+  margin-right: 30px;
+}
+.cv-left-border {
+  border-radius: 1px;
+  min-height: 24px;
+  border-left: #000 solid 1px;
+}
+.cv-name-content {
+  font-size: 32pt;
+}
+.cv-job-content {
+  font-size: 18pt;
+}
+.cv-title {
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.cv-footer {
+  background-color: #dfddd2;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  // padding-left: 50px;
+  color: $color-gray-dark;
+  border-top: $color-gray-light dashed 1px;
+  text-align: left;
+}
+.cv-footer-title {
+  color: $color-gray-dark;
+  letter-spacing: 1px;
+  height: 20px;
+}
+.cv-footer-content {
+  text-align: left;
+}
+.cv-ul-content {
+  list-style-type: none;
+  line-height: 20px;
+  word-break: break-all;
+}
+.cv-ul-content-detail {
+  color: $color-gray-normal;
+  text-align: left;
+}
+.cv-interests-list {
+  list-style-type: none;
+  columns: 2;
+  padding-left: 20px;
+}
+.cv-interests-list > li > i {
+  font-size: 20px;
+  padding-top: 5px;
+  color: #8d8d8d;
+}
+.cv-interests-list > li > span {
+  font-size: 8pt;
+  color: $color-gray-normal;
+}
 .ab-title {
   font-size: 20px;
   letter-spacing: 2px;
