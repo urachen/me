@@ -239,7 +239,7 @@ export default {
           memo: ''
         }
       ],
-      project:"主要內容為"
+      project: "主要內容為"
     };
   },
   methods: {
@@ -299,6 +299,9 @@ export default {
   }
   .el-menu {
     display: none;
+  }
+  .block {
+    min-height: 350px;
   }
 }
 .el-main {
@@ -458,7 +461,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  padding:20px;
+  padding: 20px;
   height: 400px;
 }
 .contact {

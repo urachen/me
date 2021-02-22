@@ -29,7 +29,7 @@ const initialState = {
           url: "https://z7x2c0v0b8.github.io/the_f2e_2nd/hotel_reservation.html#artboard0"
         }
       ],
-      tags: ["Vue", "Vuex", "Webpack", "Vue-router", "AXIOS", "Restful API", "SCSS", "element UI",]
+      tags: ["Vue", "Vuex", "Webpack", "Vue-router", "AXIOS", "Restful API", "SCSS", "element UI"]
     },
     {
       type: 'frontend',
@@ -181,7 +181,7 @@ const getters = {
 
 const actions = {
   setInternalImg({
-    commit,
+    commit
   }, check) {
     let internal = _.map(state.portfolio, item => {
       if (check && item.key === "internal") {
@@ -190,7 +190,7 @@ const actions = {
       return { ...item, imgUrls: ['1'] }
     })
     commit("setPortfolio", internal);
-  },
+  }
 };
 
 

@@ -4,12 +4,10 @@ const router = new VueRouter({
   routes,
   mode: 'hash',
   base: '/me',
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     return { x: 0, y: 0 }
   }
 });
-
-
 
 router.beforeEach((to, from, next) => {
   next();

@@ -128,7 +128,7 @@ export default {
     }
   },
   watch: {
-    "check"(to, from) {
+    "check"(to) {
       if (to) {
         this.$store.dispatch('setInternalImg', this.check);
       }
