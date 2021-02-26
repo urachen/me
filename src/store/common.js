@@ -29,7 +29,9 @@ const initialState = {
           url: "https://z7x2c0v0b8.github.io/the_f2e_2nd/hotel_reservation.html#artboard0"
         }
       ],
-      tags: ["Vue", "Vuex", "Webpack", "Vue-router", "AXIOS", "Restful API", "SCSS", "element UI"]
+      tags: ["Vue", "Vuex", "Webpack", "Vue-router", "AXIOS", "Restful API", "SCSS", "element UI"],
+      auth: false,
+      password: ''
     },
     {
       type: 'frontend',
@@ -44,7 +46,9 @@ const initialState = {
       //     url: "http://www.google.com"
       //   }
       // ],
-      tags: ["Vue", "Vue Cli", "Bootstrap-Vue"]
+      tags: ["Vue", "Vue Cli", "Bootstrap-Vue"],
+      auth: false,
+      password: ''
     },
     {
       type: 'frontend',
@@ -64,21 +68,23 @@ const initialState = {
       links: [
         {
           name: "Demo (目前僅有前端prototype)",
-          url: "http://www.google.com"
+          url: "https://urachen.github.io/workouter-app/"
         },
         {
           name: "Figma設計稿",
           url: " https://www.figma.com/file/msgFudMLm7zQKLSDdtHvWB/Workouter?node-id=100%3A0"
         }
       ],
-      tags: ["React", "Material UI", "data-fns"]
+      tags: ["React", "Material UI", "data-fns"],
+      auth: false,
+      password: ''
     },
     {
       type: 'frontend',
       key: "internal",
       title: "Internal Projects",
       coverImg: require('@assets/img/internal/1.png'),
-      imgUrls: ['1'],
+      imgUrls: ['1', '2', '3', '4', '5', '6', '10'],
       background: `<p>公司內部管理網站</p>
       <p>開發專案</p>
       <ul>
@@ -107,7 +113,9 @@ const initialState = {
           </ul>
         </li>
       </ul>`,
-      tags: ["SCSS", "Bootstrap", "Vue", "Vuex", "Vue router", "Webpack", "i18n", "axios", "Restful API"]
+      tags: ["SCSS", "Bootstrap", "Vue", "Vuex", "Vue router", "Webpack", "i18n", "axios", "Restful API"],
+      auth: true,
+      password: 'starlux'
     },
     {
       type: 'frontend',
@@ -135,7 +143,9 @@ const initialState = {
           url: "https://urachen.github.io/realtalk_prototype"
         }
       ],
-      tags: ["Bootstrap", "choice.js", "quill"]
+      tags: ["Bootstrap", "choice.js", "quill"],
+      auth: false,
+      password: ''
     },
     {
       type: 'UI',
@@ -157,7 +167,9 @@ const initialState = {
           url: "https://www.figma.com/file/o4QiC1MpgbasbCegofnsyM/21-Challenge?node-id=408%3A140"
         }
       ],
-      tags: ["Figma", "Figma21Days", "UI Design"]
+      tags: ["Figma", "Figma21Days", "UI Design"],
+      auth: false,
+      password: ''
     }
   ]
 };
@@ -184,8 +196,8 @@ const actions = {
     commit
   }, check) {
     let internal = _.map(state.portfolio, item => {
-      if (check && item.key === "internal") {
-        return { ...item, imgUrls: ['1', '2', '3', '4', '5', '6'] }
+      if (check) {
+        return { ...item };
       }
       return { ...item, imgUrls: ['1'] }
     })

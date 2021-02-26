@@ -22,7 +22,13 @@
             ></el-image>
           </transition>
         </el-row>
-        <el-row class="project-detail-image-group">
+        <el-row
+          class="project-detail-image-group"
+          v-if="
+            !currentProject.auth ||
+            (currentProject.auth && currentProject.password === password)
+          "
+        >
           <el-col
             :span="6"
             v-for="(imgItem, imgKey) in currentImgUrls"
@@ -40,23 +46,21 @@
       <el-col :span="8" :xs="24" class="project-detail-content">
         <h1>{{ currentProject.title }}</h1>
         <div class="normal-text" v-html="currentProject.background"></div>
-        <el-row>
-          <el-col :span="16">
+        <el-row v-if="currentProject.auth">
+          <el-col :span="24">
             <el-input
               placeholder="Please input password to see more"
               v-model="password"
               show-password
-              :disabled="check"
             ></el-input>
           </el-col>
-          <el-col :offset="1" :span="7">
+          <!-- <el-col :offset="1" :span="7">
             <el-button
               icon="el-icon-check"
               circle
               @click="onClickPassword"
-              :disabled="check"
             ></el-button>
-          </el-col>
+          </el-col> -->
         </el-row>
         <el-divider></el-divider>
         <el-row
@@ -111,8 +115,7 @@ export default {
     return {
       currentProjectKey: this.$route.params.projectKey,
       currentCover: '',
-      password: '',
-      check: false
+      password: ''
     }
   },
   computed: {
@@ -127,29 +130,16 @@ export default {
       })
     }
   },
-  watch: {
-    "check"(to) {
-      if (to) {
-        this.$store.dispatch('setInternalImg', this.check);
-      }
-    }
-  },
   methods: {
     onBack() {
       this.$router.push({ name: 'Project' })
     },
     onClickImg(key) {
       this.currentCover = this.currentImgUrls[key];
-    },
-    onClickPassword() {
-      if (this.password === 'starlux') {
-        this.check = true;
-      }
     }
   },
   created() {
     this.currentCover = this.currentProject.coverImg;
-    this.$store.dispatch('setInternalImg', this.check);
   }
 }
 </script>
@@ -225,6 +215,9 @@ export default {
 .el-image-viewer__btn {
   color: #ffffff !important;
 }
+// .el-divider__text {
+//   background-color: $color-beige !important;
+// }
 .v-enter-active,
 .v-leave-active {
   transition: opacity 1s;
