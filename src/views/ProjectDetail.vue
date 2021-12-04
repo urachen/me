@@ -103,7 +103,7 @@
     </el-row>
     <el-row class="back" type="flex" justify="center">
       <el-col :span="2">
-        <el-button type="primary" @click="onBack">Back</el-button>
+        <el-button type="primary" @click="onBack">Back to all projects</el-button>
       </el-col>
     </el-row>
   </div>

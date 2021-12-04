@@ -60,7 +60,7 @@
             <div class="cv-gap"></div>
             <span>STARLUX Airlines</span>
             <div class="cv-gap"></div>
-            <span>2019/04 - 2020</span>
+            <span>2019/04 - 2021</span>
             <img
               src="https://www.starlux-airlines.com/_nuxt/img/386723d.svg"
               height="20px"
@@ -85,7 +85,7 @@
               <li>製作共用 component 供其他專案運用，提升專案開發效率。</li>
               <li>使用Docker與Jenkins自動化部署經驗。</li>
               <li>
-                開發專案:官網靜態內容管理系統、航班旅客資料保存系統、組員通關表單系統、員工考核系統、員工優待機票系統
+                開發專案:官網靜態內容管理系統、航班旅客資料保存系統、員工考核系統、員工優待機票系統、相關飛航及組員後台系統。
               </li>
             </ul>
           </div>
@@ -121,7 +121,7 @@
                 負責排班資料維護、班表發佈後日常追蹤監控、組員簽到退、組員資訊網站、組員個人班表iOS
                 APP等相關系統維運及新功能開發。
               </li>
-              <li>主要使用VB.NET、JavaScript、jQuery，資料庫為Oracle SQL</li>
+              <li>主要使用VB.NET、JavaScript、jQuery，資料庫為Oracle SQL。</li>
               <li>
                 負責修改開發案約105件，簡化業務單位作業流程、提升工作效率及使用滿意度。
               </li>
@@ -421,3 +421,4 @@ export default {
   border-left: #999999 solid 1px;
 }
 </style>
+

@@ -123,14 +123,14 @@
       </el-col>
     </el-row>
     <el-row class="project">
-      <el-col :span="10" :offset="2" :xs="{ span: 24, offset: 0 }">
+      <el-col :span="5" :offset="3" :xs="{ span: 24, offset: 0 }">
         <el-image
           class="project-image"
           :src="projectImgUrl"
           :fit="'cover'"
         ></el-image>
       </el-col>
-      <el-col :span="9" :xs="23">
+      <el-col :span="13" :xs="23">
         <div class="project-content">
           <span
             class="title project-title"
@@ -239,7 +239,8 @@ export default {
           memo: ''
         }
       ],
-      project: "主要內容為"
+      project: `<div>FrontEnd / UI Design</div>
+                `
     };
   },
   methods: {
