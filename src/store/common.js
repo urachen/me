@@ -84,7 +84,7 @@ const initialState = {
       key: "internal",
       title: "Internal Projects",
       coverImg: require('@assets/img/internal/1.png'),
-      imgUrls: ['1', '2', '3', '4', '5', '6', '10'],
+      imgUrls: ['1', '2', '3', '4', '5', '6','7','8','9', '10','11','12'],
       background: `<p>公司內部管理網站</p>
       <p>開發專案</p>
       <ul>
@@ -95,6 +95,7 @@ const initialState = {
         <li>組員通關表單系統</li>
         <li>員工考核系統</li>
         <li>員工優待機票系統</li>
+        <li>員工通訊錄</li>
         <li>JX-vue(架構)</li>
       </ul>
       <p>專案前端架構</p>
